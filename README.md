@@ -1,1 +1,17 @@
 # BadBettingAnalysis
+
+This was my first ever attempt at data analysis and prediction, which one can see from the code. The brief was fairly simple, to try and predict the results of football games in English professional football using an Elo algorithm and then bet on the games with the aim of gaining a net profit. In the end the idea did not succeed as despite being a fairly decent predictor of the winning team it was not able to acheive a profit betting, either with fixed or weighted bets, but it was an excellent learning experience.
+
+The data was collected from https://www.football-data.co.uk/, an excellent site of football data.
+
+This project was done before I was familiar with almost any python data handling libraries, all the data was stored in individual CSV files for each year and league with a standardised naming to allow mass loading of them using python's default CSV handling, as the data was not homogenous across the years the ProcessCSVs.py file automatically moved around a few columns and renamed them to make all the files at least work well. Data was accessed using direct indices from a massive 2D array that had all the games in them, a dataframe would've helped a lot but I was unaware of them at the time, and much of the manipulation that would be trivial one line operations was done with for loops painstakingly moving all the stuff around manually. 
+
+I was also unaware of jupyter or interactive notebooks in general so all the files are raw.py files that are ran in their entirety, including loading data, every time. Fortunately the computations were simple enough that it wasn't a major issue. Data visualisation was done by saving .png files of matplotlib graphs, I'd realised I needed to visualise my results so had gone and found that library at least.
+
+On the analysis side, Calc Baseline provided a simple baseline for comparison using random bets, bet on favourite and bet on home used fairly simple and hopefully self explanatory algorithms, and past performance looks back at a certain window and picks the team that did best over that timeframe. All of these simple systems were used to try and find a basis for comparison and as demonstrators, the Elo algorithm outperformed them all which is nice, even though it didn't turn a profit.
+
+Elo System implements the Elo algorithm (https://uscf1-nyc1.aodhosting.com/CL-AND-CR-ALL/CL-ALL/1960/1960_03_1.pdf) in a fairly simple manner, but with a custom draw factor selected by testing a wide range to find one that best suited football. The Elo tester simply does the same but in a manner that is set up to allow for testing of it's efficacy and not to just generate predictors.
+
+I had also very little understanding of stats or proper testing so much of the methodology there is very flawed, with limited use of p-values as the only real proper metric. It's likely the whole thing would have ran a lot better had I properly used test/training sets and understood how to accurately measure how models work and not allow contamination of test data etc.
+
+Overall despite not being profitable and being extremely unoptimised it was a great learning experience to be able to go through and try this and taught me a lot about using real world data and analysis and being able to accurately test models and improve them. I've left it in the messy, uncommented and unoptimised form as a marker of where I was but I hope to revisit it and do something better next time.
